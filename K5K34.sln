@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K5K34WEB", "SMS.Web\K5K34WEB.csproj", "{9D1277FB-301B-4A30-A450-8531D4B83D0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSJob", "SMSJob\SMSJob.csproj", "{F7E5B626-E5D3-41C2-A8A9-4F44831BA4D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMSCommon", "SMSCommon\SMSCommon.csproj", "{5E97B1BE-BCFF-47F7-8785-503E3BA7E0B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D1277FB-301B-4A30-A450-8531D4B83D0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D1277FB-301B-4A30-A450-8531D4B83D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D1277FB-301B-4A30-A450-8531D4B83D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D1277FB-301B-4A30-A450-8531D4B83D0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7E5B626-E5D3-41C2-A8A9-4F44831BA4D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7E5B626-E5D3-41C2-A8A9-4F44831BA4D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7E5B626-E5D3-41C2-A8A9-4F44831BA4D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7E5B626-E5D3-41C2-A8A9-4F44831BA4D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E97B1BE-BCFF-47F7-8785-503E3BA7E0B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E97B1BE-BCFF-47F7-8785-503E3BA7E0B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E97B1BE-BCFF-47F7-8785-503E3BA7E0B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E97B1BE-BCFF-47F7-8785-503E3BA7E0B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
