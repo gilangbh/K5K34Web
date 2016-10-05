@@ -11,7 +11,14 @@ namespace SMS.Web.SMS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Request.QueryString["uniqueid"] != null)
+                {
+                    string uniqueID = Request.QueryString["uniqueid"];
+                    LiteralUniqueID.Text = uniqueID;
+                }
+            }
         }
     }
 }

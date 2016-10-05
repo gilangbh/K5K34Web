@@ -32,7 +32,24 @@ input[type="select"] {
     .jumbotron {
         margin-top: 20px;
     }
+
     .body-content {
         padding: 0;
     }
 }
+
+.card {
+    margin-bottom: .75rem;
+}
+
+    .card .card-title {
+        margin-bottom: .75rem;
+    }
+
+    .card .card-block {
+        padding: 1.25rem;
+    }
+
+    .card .card-text {
+        margin-bottom: 1rem;
+    }

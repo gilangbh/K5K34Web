@@ -54,52 +54,17 @@ namespace SMS.Web.SMS
             {
                 noHP = TextBoxNomorHP.Value;
                 message = TextAreaMessageContent.Value;
+                string uniqueID = Common.GetUniqueKey(6);
 
-                SaveSMS(noHP, message);
+                GlobalHelper.SaveSMS(noHP, message, uniqueID);
+
+                Response.Redirect("Success?uniqueid=" + uniqueID);
             }
             else
             {
                 // Bot Attack, non validated !
-                Response.Redirect("~/Default.aspx");
+                Response.Redirect("Send");
             }
-        }
-
-        private void SaveSMS(string noHP, string message)
-        {
-            string itemID = "";
-            using (k5k34_dbEntities context = new k5k34_dbEntities())
-            {
-                SMSitem item = new SMSitem()
-                {
-                    Id = Guid.NewGuid().ToString().ToUpper(),
-                    SendTo = noHP,
-                    Content = message,
-                    SendDate = null,
-                    SendSchedule = null,
-                    Deleted = false,
-                    CreatedAt = DateTimeOffset.UtcNow,
-                    Status = "Pending",
-                    UniqueKey = Common.GetUniqueKey(6)
-                };
-                itemID = item.Id;
-                context.SMSitems.Add(item);
-                context.SaveChanges();
-            }
-
-            QueueSMS(itemID);
-
-            Response.Redirect("Success");
-        }
-
-        private void QueueSMS(string itemID)
-        {
-            var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AzureWebJobsStorage"].ToString());
-
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            queue = queueClient.GetQueueReference("smsqueue");
-            queue.CreateIfNotExists();
-            var queueMessage = new CloudQueueMessage(itemID);
-            queue.AddMessage(queueMessage);
         }
     }
 }

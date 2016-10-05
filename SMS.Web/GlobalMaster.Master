@@ -42,9 +42,7 @@
             </Scripts>
         </asp:ScriptManager>
         <div class="container body-content">
-            <center>
-                <a href="SMS/Send">Kirim SMS</a> | <a href="SMS/Status">Cek Status</a> | <a href="SMS/About">About us</a>
-            </center>
+            
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />

@@ -1,7 +1,6 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SMS.Web.SiteMaster" %>
 <%--<%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>--%>
 
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -45,7 +44,7 @@
         </asp:ScriptManager>
         <div class="container body-content">
             <center>
-                <a href="Send">Kirim SMS</a> | <a href="Status">Cek Status</a> | <a href="About">About us</a>
+                <a href="Send">Kirim SMS</a> | <a href="Status">Cek Status</a> | <a href="Details">Lacak SMS</a> | <a href="About">About us</a>
             </center>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>

@@ -86,5 +86,4 @@ namespace SMS.Web
             Context.GetOwinContext().Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
         }
     }
-
 }

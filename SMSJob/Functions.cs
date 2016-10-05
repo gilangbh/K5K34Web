@@ -18,15 +18,15 @@ namespace SMSJob
         // on an Azure Queue called queue.
         public static void ProcessSendSMS([QueueTrigger("smsqueue")] string message, TextWriter log)
         {
-            string userkey = "u2eif5";
-            string passkey = "k5k341hfgj";
-
+            string userkey= Environment.GetEnvironmentVariable("ZENZIVAKEY");
+            string passkey = Environment.GetEnvironmentVariable("ZENZIVASECRET");
+            
             k5k34_dbEntities context = new k5k34_dbEntities();
             List<SMSitem> items = context.SMSitems.Where(x => x.Id == message).ToList();
 
             foreach (var item in items)
             {
-                string appendedMessage = item.Content + " - SMS Gratis PRO app";
+                string appendedMessage = item.Content + " - http://s.id/smsgratis";
                 HttpWebRequest request = WebRequest.Create("https://reguler.zenziva.net/apps/smsapi.php?userkey=" + userkey + "&passkey=" + passkey + "&nohp=" + item.SendTo + "&pesan=" + appendedMessage) as HttpWebRequest;
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
@@ -37,18 +37,20 @@ namespace SMSJob
 
                 if (status.InnerText == "0")
                 {
-                    Trace.TraceInformation("SMS ID: " + message);
-                    Trace.TraceInformation("STATUS: SENT");
-                    Trace.TraceInformation("SMS Sent: " + DateTimeOffset.UtcNow);
+                    
+                    log.WriteLine("SMS ID: " + message);
+                    log.WriteLine("STATUS: SENT");
+                    log.WriteLine("SMS Sent: " + DateTimeOffset.UtcNow);
                     item.SendDate = DateTimeOffset.UtcNow;
                     item.Status = "Sent";
                     context.SaveChanges();
                 }
                 else
                 {
-                    Trace.TraceError("SMS ID: " + message);
-                    Trace.TraceError("STATUS: FAILED");
+                    log.WriteLine("SMS ID: " + message);
+                    log.WriteLine("STATUS: FAILED");
                     item.Status = "Failed";
+                    context.SaveChanges();
                 }
 
                 response.Close();
