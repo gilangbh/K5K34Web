@@ -11,13 +11,16 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="text-center">Berhasil!</h1>
-            <h3 class="text-center">Kode SMS: <asp:Literal runat="server" ID="LiteralUniqueID"></asp:Literal></h3>
+            <h3 class="text-center">Kode SMS:
+                <code>
+                    <asp:Literal runat="server" ID="LiteralUniqueID"></asp:Literal></code></h3>
             <p class="text-center">SMS Anda sedang diproses oleh sistem kami. Mohon tunggu beberapa saat hingga SMS anda terkirim.</p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12" style="margin-top: 20px;">
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md-6">
             <a href="Send" class="btn btn-primary btn-block"><i class="fa fa-inbox" style="margin-right: 10px;"></i>Kirim SMS lagi</a>
         </div>
+        <div class="col-md-6"><a href="Feedback" class="btn btn-success btn-block"><i class="fa fa-star" style="margin-right: 10px;"></i>Kirim pertanyaan, kritik & saran</a></div>
     </div>
 </asp:Content>

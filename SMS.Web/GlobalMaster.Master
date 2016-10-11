@@ -47,7 +47,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - SMS Gratis</p>
+                <p class="text-center">&copy; <%: DateTime.Now.Year %> - SMS Gratis</p>
             </footer>
         </div>
     </form>

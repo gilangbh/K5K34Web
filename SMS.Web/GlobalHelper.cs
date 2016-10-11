@@ -24,7 +24,7 @@ namespace SMS.Web
             queue.AddMessage(queueMessage);
         }
 
-        public static void SaveSMS(string noHP, string message, string uniqueID)
+        public static void SaveSMS(string noHP, string message, string uniqueID, string sender)
         {
             string itemID = "";
 
@@ -40,7 +40,8 @@ namespace SMS.Web
                     Deleted = false,
                     CreatedAt = DateTimeOffset.UtcNow,
                     Status = "Pending",
-                    UniqueKey = uniqueID
+                    UniqueKey = uniqueID,
+                    SendFrom = !string.IsNullOrEmpty(sender) ? sender : null
                 };
                 uniqueID = item.UniqueKey;
                 itemID = item.Id;

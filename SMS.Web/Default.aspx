@@ -2,6 +2,11 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
+        <div class="col-md-12" style="margin-bottom:20px;">
+            <h1 class="text-center">Download Apps GRATIS</h1>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-4">
             <!--Card-->
             <div class="card">

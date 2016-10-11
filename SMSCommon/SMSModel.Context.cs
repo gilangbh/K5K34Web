@@ -26,5 +26,8 @@ namespace SMSCommon
         }
     
         public virtual DbSet<SMSitem> SMSitems { get; set; }
+        public virtual DbSet<Feedback> Feedbacks { get; set; }
+        public virtual DbSet<ServerStatus> ServerStatus { get; set; }
+        public virtual DbSet<ServiceAvailability> ServiceAvailabilities { get; set; }
     }
 }

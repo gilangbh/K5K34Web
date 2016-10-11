@@ -26,6 +26,51 @@ namespace SMSJob
 
             foreach (var item in items)
             {
+                HttpWebRequest requestSmsQuota = WebRequest.Create("https://reguler.zenziva.net/apps/smsapibalance.php?userkey=" + userkey + "&passkey=" + passkey) as HttpWebRequest;
+                HttpWebResponse responseSmsQuota = (HttpWebResponse)requestSmsQuota.GetResponse();
+                XmlDocument xmlDocSmsQuota = new XmlDocument();
+                xmlDocSmsQuota.Load(responseSmsQuota.GetResponseStream());
+
+                XmlNode smsQuotaTotalLeft = xmlDocSmsQuota.SelectSingleNode("response//value");
+                XmlNode smsQuotaExpiryDate = xmlDocSmsQuota.SelectSingleNode("response//text");
+
+                ServerStatus serverStatus = context.ServerStatus.FirstOrDefault();
+
+                ServiceAvailability smsService = context.ServiceAvailabilities.Where(x => x.ServiceName == "SmsLeft").FirstOrDefault();
+
+                if (smsService != null)
+                {
+                    smsService.Value = smsQuotaTotalLeft.InnerText;
+                }
+                else
+                {
+                    smsService = new ServiceAvailability() { ServiceName = "SmsLeft", Value = smsQuotaTotalLeft.InnerText };
+                    context.ServiceAvailabilities.Add(smsService);
+                }
+
+                ServiceAvailability smsExpiryDate = context.ServiceAvailabilities.Where(x => x.ServiceName == "SmsExpiryDate").FirstOrDefault();
+
+                if (smsExpiryDate != null)
+                {
+                    smsExpiryDate.Value = smsQuotaExpiryDate.InnerText;
+                }
+                else
+                {
+                    smsExpiryDate = new ServiceAvailability() { ServiceName = "SmsExpiryDate", Value = smsQuotaExpiryDate.InnerText };
+                    context.ServiceAvailabilities.Add(smsExpiryDate);
+                }
+
+                context.SaveChanges();
+                responseSmsQuota.Close();
+
+                if (Convert.ToInt32(smsQuotaTotalLeft.InnerText) > 97 && Convert.ToInt32(smsQuotaTotalLeft.InnerText) < 101)
+                {
+                    log.WriteLine("SMS Left:" + smsQuotaTotalLeft.InnerText);
+                    HttpWebRequest requestAlert = WebRequest.Create("https://reguler.zenziva.net/apps/smsapi.php?userkey=" + userkey + "&passkey=" + passkey + "&nohp=" + item.SendTo + "&pesan=SMS Mau Habis!") as HttpWebRequest;
+                    HttpWebResponse responseAlert = (HttpWebResponse)requestAlert.GetResponse();
+                    responseAlert.Close();
+                }
+
                 string appendedMessage = item.Content + " - http://s.id/smsgratis";
                 HttpWebRequest request = WebRequest.Create("https://reguler.zenziva.net/apps/smsapi.php?userkey=" + userkey + "&passkey=" + passkey + "&nohp=" + item.SendTo + "&pesan=" + appendedMessage) as HttpWebRequest;
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -37,10 +82,9 @@ namespace SMSJob
 
                 if (status.InnerText == "0")
                 {
-                    
                     log.WriteLine("SMS ID: " + message);
-                    log.WriteLine("STATUS: SENT");
-                    log.WriteLine("SMS Sent: " + DateTimeOffset.UtcNow);
+                    log.WriteLine("Status: Sent");
+                    log.WriteLine("Date: " + DateTimeOffset.UtcNow);
                     item.SendDate = DateTimeOffset.UtcNow;
                     item.Status = "Sent";
                     context.SaveChanges();
@@ -48,7 +92,8 @@ namespace SMSJob
                 else
                 {
                     log.WriteLine("SMS ID: " + message);
-                    log.WriteLine("STATUS: FAILED");
+                    log.WriteLine("Status: Failed");
+                    log.WriteLine("Date: " + DateTimeOffset.UtcNow);
                     item.Status = "Failed";
                     context.SaveChanges();
                 }

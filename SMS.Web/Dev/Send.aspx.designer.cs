@@ -7,28 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SMS.Web.SMS {
+namespace SMS.Web.Dev {
     
     
     public partial class Send {
-        
-        /// <summary>
-        /// H6ServerStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl H6ServerStatus;
-        
-        /// <summary>
-        /// LiteralServerStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralServerStatus;
         
         /// <summary>
         /// TextBoxSender control.

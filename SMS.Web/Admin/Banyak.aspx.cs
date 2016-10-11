@@ -42,7 +42,7 @@ namespace SMS.Web.Admin
             string uniqueID = Common.GetUniqueKey(6);
             for (int i = 0; i < noHPs.Length; i++)
             {
-                GlobalHelper.SaveSMS(noHPs[i], message, uniqueID);
+                GlobalHelper.SaveSMS(noHPs[i], message, uniqueID, "");
 
             }
         }

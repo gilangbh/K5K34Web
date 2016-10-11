@@ -8,7 +8,7 @@ using SMSCommon;
 
 namespace SMS.Web.SMS
 {
-    public partial class Details : System.Web.UI.Page
+    public partial class Details : BasePage
     {
         string uniqueID = "";
         protected void Page_Load(object sender, EventArgs e)
@@ -27,6 +27,11 @@ namespace SMS.Web.SMS
                 else
                 {
                     DivTrackContent.Style.Add("display", "none");
+                }
+
+                if (!this.IsUserAgentMatch)
+                {
+                    Response.Redirect("Update");
                 }
             }
         }

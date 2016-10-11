@@ -14,7 +14,7 @@ namespace SMSCommon
         {
             get
             {
-                return SendTo.Substring(0, SendTo.Length - 4) + "XXXX";
+                return SendTo.Length > 4 ? SendTo.Substring(0, SendTo.Length - 4) + "XXXX" : "(Invalid)";
             }
         }
         public string Content { get; set; }

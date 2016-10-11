@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace SMS.Web.SMS
 {
-    public partial class Banned : BasePage
+    public partial class FeedbackSent : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,11 +18,6 @@ namespace SMS.Web.SMS
                     Response.Redirect("Update");
                 }
             }
-        }
-
-        protected void LinkButtonSend_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("http://www.google.com");
         }
     }
 }

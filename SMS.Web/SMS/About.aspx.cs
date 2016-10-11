@@ -7,11 +7,17 @@ using System.Web.UI.WebControls;
 
 namespace SMS.Web.SMS
 {
-    public partial class About : System.Web.UI.Page
+    public partial class About : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (!this.IsUserAgentMatch)
+                {
+                    Response.Redirect("Update");
+                }
+            }
         }
     }
 }

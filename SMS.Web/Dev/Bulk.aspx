@@ -35,6 +35,9 @@
                     <div class="btn btn-primary btn-block"><i class="fa fa-inbox" style="margin-right:10px;"></i>Kirim</div>
                 </asp:LinkButton>
             </div>
+            <div class="md-form">
+                <asp:Label runat="server" ID="LabelUserAgent" CssClass="md-form"></asp:Label>
+            </div>
         </div>
     </div>
 </asp:Content>

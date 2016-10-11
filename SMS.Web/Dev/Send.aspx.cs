@@ -1,22 +1,28 @@
-﻿using hbehr.recaptcha;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Queue;
-using SMSCommon;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml;
+using hbehr.recaptcha;
+using SMS.Web;
+using Microsoft.WindowsAzure.Storage.Queue;
+using Microsoft.WindowsAzure.Storage;
+using System.Configuration;
+using System.Diagnostics;
+using SMSCommon;
+using System.Text.RegularExpressions;
 
 namespace SMS.Web.Dev
 {
-    public partial class Bulk : BasePage
+    public partial class Send : BasePage
     {
-        
         string noHP = "";
         string message = "";
+        string sendFrom = "";
 
         CloudQueue queue;
 
@@ -26,20 +32,15 @@ namespace SMS.Web.Dev
 
             if (!IsPostBack)
             {
-                TextAreaNomorHP.Value = "";
+                TextBoxNomorHP.Value = "";
                 TextAreaMessageContent.Value = "";
-                TextAreaNomorHP.Attributes.Add("placeholder", "08XXXXXXXXX\n08XXXXXXXXX");
 
-                if (Request.QueryString["exceedmax"] == null)
+                if (Request.QueryString["hp"] != null)
                 {
-                    PanelError.Visible = false;
+                    noHP = Request.QueryString["hp"].ToString();
+
+                    TextBoxNomorHP.Value = Regex.Replace(noHP, @"\D", "");
                 }
-
-                String userAgent;
-                userAgent = Request.UserAgent;
-
-                LabelUserAgent.Text = userAgent;
-
                 if (!this.IsUserAgentMatch)
                 {
                     Response.Redirect("Update");
@@ -56,26 +57,27 @@ namespace SMS.Web.Dev
 
             if (validCaptcha)
             {
-                string[] noHPs = TextAreaNomorHP.Value.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-                message = TextAreaMessageContent.Value;
-
-                if (noHPs.Length > 5)
+                if (TextAreaMessageContent.InnerText.Length < 135)
                 {
-                    Response.Redirect("Bulk?exceedmax=true");
+                    noHP = TextBoxNomorHP.Value;
+                    message = TextAreaMessageContent.Value;
+                    sendFrom = TextBoxSender.Value;
+
+                    string uniqueID = Common.GetUniqueKey(6);
+
+                    GlobalHelper.SaveSMS(noHP, message, uniqueID, sendFrom);
+
+                    Response.Redirect("Success?uniqueid=" + uniqueID);
                 }
                 else
                 {
-                    string uniqueID = Common.GetUniqueKey(6);
-                    for (int i = 0; i < noHPs.Length; i++)
-                    {
-                        GlobalHelper.SaveSMS(noHPs[i], message, uniqueID, "");
-                    }
+                    Response.Redirect("Send");
                 }
             }
             else
             {
                 // Bot Attack, non validated !
-                Response.Redirect("Bulk");
+                Response.Redirect("Send");
             }
         }
     }

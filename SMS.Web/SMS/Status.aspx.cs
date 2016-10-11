@@ -8,7 +8,7 @@ using SMSCommon;
 
 namespace SMS.Web.SMS
 {
-    public partial class Status : System.Web.UI.Page
+    public partial class Status : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,6 +26,11 @@ namespace SMS.Web.SMS
                     Status = x.Status
                 }).ToList();
                 ListViewSentSMS.DataBind();
+
+                if (!this.IsUserAgentMatch)
+                {
+                    Response.Redirect("Update");
+                }
             }
         }
     }

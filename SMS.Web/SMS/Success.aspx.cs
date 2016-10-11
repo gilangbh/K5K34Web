@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace SMS.Web.SMS
 {
-    public partial class Success : System.Web.UI.Page
+    public partial class Success : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,6 +17,11 @@ namespace SMS.Web.SMS
                 {
                     string uniqueID = Request.QueryString["uniqueid"];
                     LiteralUniqueID.Text = uniqueID;
+                }
+
+                if (!this.IsUserAgentMatch)
+                {
+                    Response.Redirect("Update");
                 }
             }
         }

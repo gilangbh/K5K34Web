@@ -6,6 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="c8617eaccf724b35966028307d7c78ba" Name="Diagram1">
         <EntityTypeShape EntityType="k5k34_dbModel.SMSitem" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="k5k34_dbModel.Feedback" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="k5k34_dbModel.ServerStatus" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="k5k34_dbModel.ServiceAvailability" Width="2.625" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

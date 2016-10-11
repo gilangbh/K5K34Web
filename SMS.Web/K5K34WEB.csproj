@@ -208,6 +208,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Dev\Bulk.aspx" />
+    <Content Include="Dev\Send.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Account\Web.config" />
     <Content Include="fonts\FontAwesome.otf" />
@@ -268,12 +269,14 @@
     <Content Include="Global.asax" />
     <Content Include="SMS\About.aspx" />
     <Content Include="SMS\Banned.aspx" />
-    <Content Include="SMS\Contact.aspx" />
     <Content Include="SMS\Details.aspx" />
+    <Content Include="SMS\Feedback.aspx" />
+    <Content Include="SMS\FeedbackSent.aspx" />
     <Content Include="SMS\Send.aspx" />
     <Content Include="Site.Master" />
     <Content Include="SMS\Status.aspx" />
     <Content Include="SMS\Success.aspx" />
+    <Content Include="SMS\Update.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -415,6 +418,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -435,6 +441,13 @@
     </Compile>
     <Compile Include="Dev\Bulk.aspx.designer.cs">
       <DependentUpon>Bulk.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dev\Send.aspx.cs">
+      <DependentUpon>Send.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dev\Send.aspx.designer.cs">
+      <DependentUpon>Send.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -470,19 +483,26 @@
     <Compile Include="SMS\Banned.aspx.designer.cs">
       <DependentUpon>Banned.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SMS\Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SMS\Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SMS\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SMS\Details.aspx.designer.cs">
       <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SMS\Feedback.aspx.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMS\Feedback.aspx.designer.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SMS\FeedbackSent.aspx.cs">
+      <DependentUpon>FeedbackSent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMS\FeedbackSent.aspx.designer.cs">
+      <DependentUpon>FeedbackSent.aspx</DependentUpon>
     </Compile>
     <Compile Include="SMS\Send.aspx.cs">
       <DependentUpon>Send.aspx</DependentUpon>
@@ -518,6 +538,13 @@
     </Compile>
     <Compile Include="SMS\Success.aspx.designer.cs">
       <DependentUpon>Success.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SMS\Update.aspx.cs">
+      <DependentUpon>Update.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMS\Update.aspx.designer.cs">
+      <DependentUpon>Update.aspx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">

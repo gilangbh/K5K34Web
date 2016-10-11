@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace SMS.Web.SMS
 {
-    public partial class Contact : System.Web.UI.Page
+    public partial class Update : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

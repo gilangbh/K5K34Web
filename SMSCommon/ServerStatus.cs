@@ -12,20 +12,14 @@ namespace SMSCommon
     using System;
     using System.Collections.Generic;
     
-    public partial class SMSitem
+    public partial class ServerStatus
     {
         public string Id { get; set; }
-        public int SMSID { get; set; }
-        public string SendTo { get; set; }
-        public string Content { get; set; }
+        public string SmsLeft { get; set; }
+        public string ExpiryDate { get; set; }
         public byte[] Version { get; set; }
         public System.DateTimeOffset CreatedAt { get; set; }
         public Nullable<System.DateTimeOffset> UpdatedAt { get; set; }
         public bool Deleted { get; set; }
-        public Nullable<System.DateTimeOffset> SendDate { get; set; }
-        public Nullable<System.DateTimeOffset> SendSchedule { get; set; }
-        public string Status { get; set; }
-        public string UniqueKey { get; set; }
-        public string SendFrom { get; set; }
     }
 }

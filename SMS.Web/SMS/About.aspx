@@ -8,9 +8,12 @@
         <hr />
     </div>
     <div class="row" style="margin-top: 20px;">
-        <p class="text-center">Developed by Gilang B.</p>
+        <p class="text-center">Developed by Team Azure Pro</p>
         <p class="text-center">Design style from md-bootstrap</p>
         <hr />
+    </div>
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md-12"><a href="Feedback" class="btn btn-success btn-block"><i class="fa fa-star" style="margin-right: 10px;"></i>Kirim pertanyaan, kritik & saran</a></div>
     </div>
     <div class="row" style="margin-top: 20px;">
         <div class="col-md-12">

@@ -7,37 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SMS.Web.Dev {
+namespace SMS.Web.SMS {
     
     
-    public partial class Bulk {
+    public partial class Feedback {
         
         /// <summary>
-        /// PanelError control.
+        /// TextAreaFeedback control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelError;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextAreaFeedback;
         
         /// <summary>
-        /// TextAreaNomorHP control.
+        /// TextBoxName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextAreaNomorHP;
-        
-        /// <summary>
-        /// TextAreaMessageContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TextAreaMessageContent;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TextBoxName;
         
         /// <summary>
         /// LinkButtonSendMessage control.
@@ -47,14 +38,5 @@ namespace SMS.Web.Dev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton LinkButtonSendMessage;
-        
-        /// <summary>
-        /// LabelUserAgent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelUserAgent;
     }
 }

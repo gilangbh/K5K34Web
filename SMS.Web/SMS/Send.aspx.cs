@@ -18,12 +18,12 @@ using System.Text.RegularExpressions;
 
 namespace SMS.Web.SMS
 {
-    public partial class Send : System.Web.UI.Page
+    public partial class Send : BasePage
     {
         string noHP = "";
         string message = "";
-
-        CloudQueue queue;
+        string sendFrom = "";
+        string serverStatus = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,12 +33,32 @@ namespace SMS.Web.SMS
             {
                 TextBoxNomorHP.Value = "";
                 TextAreaMessageContent.Value = "";
+                serverStatus = Common.GetServerStatus();
+                LiteralServerStatus.Text = serverStatus;
+
+                if (serverStatus == "Dalam Perbaikan")
+                {
+                    H6ServerStatus.Attributes["class"] = "text-warning text-center";
+                }
+                if (serverStatus == "Offline")
+                {
+                    H6ServerStatus.Attributes["class"] = "text-danger text-center";
+                }
+                if (serverStatus == "Online")
+                {
+                    H6ServerStatus.Attributes["class"] = "text-success text-center";
+                }
 
                 if (Request.QueryString["hp"] != null)
                 {
                     noHP = Request.QueryString["hp"].ToString();
 
                     TextBoxNomorHP.Value = Regex.Replace(noHP, @"\D", "");
+                }
+
+                if (!this.IsUserAgentMatch)
+                {
+                    Response.Redirect("Update");
                 }
             }
         }
@@ -52,13 +72,26 @@ namespace SMS.Web.SMS
 
             if (validCaptcha)
             {
-                noHP = TextBoxNomorHP.Value;
-                message = TextAreaMessageContent.Value;
-                string uniqueID = Common.GetUniqueKey(6);
+                if (Common.GetServerStatus() != "Online")
+                {
+                    Response.Redirect("Send");
+                }
+                if (TextAreaMessageContent.InnerText.Length < 135)
+                {
+                    noHP = TextBoxNomorHP.Value;
+                    message = TextAreaMessageContent.Value;
+                    sendFrom = TextBoxSender.Value;
 
-                GlobalHelper.SaveSMS(noHP, message, uniqueID);
+                    string uniqueID = Common.GetUniqueKey(6);
 
-                Response.Redirect("Success?uniqueid=" + uniqueID);
+                    GlobalHelper.SaveSMS(noHP, message, uniqueID, sendFrom);
+
+                    Response.Redirect("Success?uniqueid=" + uniqueID);
+                }
+                else
+                {
+                    Response.Redirect("Send");
+                }
             }
             else
             {

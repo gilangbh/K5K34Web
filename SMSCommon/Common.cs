@@ -28,5 +28,23 @@ namespace SMSCommon
             }
             return result.ToString();
         }
+
+        public static string GetServerStatus()
+        {
+            string status = "Offline";
+            using (k5k34_dbEntities context = new SMSCommon.k5k34_dbEntities())
+            {
+                try
+                {
+                    status = context.ServiceAvailabilities.Where(x => x.ServiceName == "WebServerStatus").First().Value;
+                }
+                catch (Exception)
+                {
+                    return "Offline";
+                }
+            }
+
+            return status;
+        }
     }
 }

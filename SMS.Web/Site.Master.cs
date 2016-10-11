@@ -71,13 +71,6 @@ namespace SMS.Web
         {
             if (!IsPostBack)
             {
-                //String userAgent;
-                //userAgent = Request.UserAgent;
-
-                //if (userAgent != "k5k34")
-                //{
-                //    Response.Redirect("~/");
-                //}
             }
         }
 
