@@ -207,7 +207,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Dev\Bulk.aspx" />
+    <Content Include="SMS\BulkSend.aspx" />
     <Content Include="Dev\Send.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Account\Web.config" />
@@ -269,6 +269,7 @@
     <Content Include="Global.asax" />
     <Content Include="SMS\About.aspx" />
     <Content Include="SMS\Banned.aspx" />
+    <Content Include="SMS\BulkSent.aspx" />
     <Content Include="SMS\Details.aspx" />
     <Content Include="SMS\Feedback.aspx" />
     <Content Include="SMS\FeedbackSent.aspx" />
@@ -435,12 +436,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Dev\Bulk.aspx.cs">
-      <DependentUpon>Bulk.aspx</DependentUpon>
+    <Compile Include="SMS\BulkSend.aspx.cs">
+      <DependentUpon>BulkSend.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Dev\Bulk.aspx.designer.cs">
-      <DependentUpon>Bulk.aspx</DependentUpon>
+    <Compile Include="SMS\BulkSend.aspx.designer.cs">
+      <DependentUpon>BulkSend.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dev\Send.aspx.cs">
       <DependentUpon>Send.aspx</DependentUpon>
@@ -482,6 +483,13 @@
     </Compile>
     <Compile Include="SMS\Banned.aspx.designer.cs">
       <DependentUpon>Banned.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SMS\BulkSent.aspx.cs">
+      <DependentUpon>BulkSent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SMS\BulkSent.aspx.designer.cs">
+      <DependentUpon>BulkSent.aspx</DependentUpon>
     </Compile>
     <Compile Include="SMS\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>

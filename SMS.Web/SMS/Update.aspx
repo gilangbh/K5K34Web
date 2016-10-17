@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="text-center">Update Tersedia</h1>
-            <p class="text-center">Update aplikasi versi terbaru tersedia di Playstore. Silakan Update terlebih dahulu untuk terus menggunakan layanan kami.</p>
+            <p class="text-center">Kami senantiasa meningkatkan keamanan dan kenyamanan Anda dalam menggunakan aplikasi ini.<br />Silakan Update aplikasi di Playstore terlebih dahulu untuk terus menggunakan layanan kami.</p>
         </div>
     </div>
 </asp:Content>

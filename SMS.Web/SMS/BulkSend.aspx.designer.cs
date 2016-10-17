@@ -7,10 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SMS.Web.Dev {
+namespace SMS.Web.SMS {
     
     
-    public partial class Bulk {
+    public partial class BulkSend {
+        
+        /// <summary>
+        /// H6ServerStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl H6ServerStatus;
+        
+        /// <summary>
+        /// LiteralServerStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal LiteralServerStatus;
         
         /// <summary>
         /// PanelError control.

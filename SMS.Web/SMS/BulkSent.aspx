@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Sukses" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Success.aspx.cs" Inherits="SMS.Web.SMS.Success" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BulkSent.aspx.cs" Inherits="SMS.Web.SMS.BulkSent" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderAdditionalPageHead" runat="server">
 </asp:Content>
@@ -19,7 +19,7 @@
     </div>
     <div class="row">
         <div class="col-md-6" style="margin-top: 10px;">
-            <a href="Send" class="btn btn-primary btn-block"><i class="fa fa-inbox" style="margin-right: 10px;"></i>Kirim SMS lagi</a>
+            <a href="Send" class="btn btn-primary btn-block"><i class="fa fa-inbox" style="margin-right: 10px;"></i>Kirim Banyak SMS lagi</a>
         </div>
         <div class="col-md-6" style="margin-top: 10px;"><a href="Feedback" class="btn btn-success btn-block"><i class="fa fa-star" style="margin-right: 10px;"></i>Kirim pertanyaan, kritik & saran</a></div>
     </div>

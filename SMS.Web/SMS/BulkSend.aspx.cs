@@ -10,13 +10,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SMS.Web.Dev
+namespace SMS.Web.SMS
 {
-    public partial class Bulk : BasePage
+    public partial class BulkSend : BasePage
     {
         
         string noHP = "";
         string message = "";
+        string serverStatus = "";
 
         CloudQueue queue;
 
@@ -30,6 +31,22 @@ namespace SMS.Web.Dev
                 TextAreaMessageContent.Value = "";
                 TextAreaNomorHP.Attributes.Add("placeholder", "08XXXXXXXXX\n08XXXXXXXXX");
 
+                serverStatus = Common.GetServerStatus();
+                LiteralServerStatus.Text = serverStatus;
+
+                if (serverStatus == "Dalam Perbaikan")
+                {
+                    H6ServerStatus.Attributes["class"] = "text-warning text-center";
+                }
+                if (serverStatus == "Offline")
+                {
+                    H6ServerStatus.Attributes["class"] = "text-danger text-center";
+                }
+                if (serverStatus == "Online")
+                {
+                    H6ServerStatus.Attributes["class"] = "text-success text-center";
+                }
+
                 if (Request.QueryString["exceedmax"] == null)
                 {
                     PanelError.Visible = false;
@@ -38,7 +55,7 @@ namespace SMS.Web.Dev
                 String userAgent;
                 userAgent = Request.UserAgent;
 
-                LabelUserAgent.Text = userAgent;
+                //LabelUserAgent.Text = userAgent;
 
                 if (!this.IsUserAgentMatch)
                 {
@@ -59,16 +76,25 @@ namespace SMS.Web.Dev
                 string[] noHPs = TextAreaNomorHP.Value.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
                 message = TextAreaMessageContent.Value;
 
-                if (noHPs.Length > 5)
+                if (Common.GetServerStatus() != "Online")
                 {
-                    Response.Redirect("Bulk?exceedmax=true");
+                    Response.Redirect("Send");
                 }
-                else
+                if (TextAreaMessageContent.InnerText.Length < 135)
                 {
-                    string uniqueID = Common.GetUniqueKey(6);
-                    for (int i = 0; i < noHPs.Length; i++)
+                    if (noHPs.Length > 5)
                     {
-                        GlobalHelper.SaveSMS(noHPs[i], message, uniqueID, "");
+                        Response.Redirect("Bulk?exceedmax=true");
+                    }
+                    else
+                    {
+                        string uniqueID = Common.GetUniqueKey(6);
+                        for (int i = 0; i < noHPs.Length; i++)
+                        {
+                            GlobalHelper.SaveSMS(noHPs[i], message, uniqueID, "");
+
+                            Response.Redirect("BulkSent?uniqueid=" + uniqueID);
+                        }
                     }
                 }
             }
